@@ -2,6 +2,8 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
+let code = "";
+
 let app = express();
 app
   .use(express.static(path.join(__dirname, 'public')))
@@ -13,5 +15,10 @@ app
 
 
 app.get('/redirect', function (req, res) {
+	code = req.query.code;
   res.send(JSON.stringify(req.query))
+})
+
+app.get('/code', function (req, res) {
+  res.send(code)
 })
