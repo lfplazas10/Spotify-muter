@@ -11,8 +11,17 @@
     "test": "node test.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "ejs": "^2.5.6",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "input-event": "^1.2.5",
+    "iohook": "^0.2.0",
+    "keypress": "^0.2.1",
+    "opn": "^5.3.0",
+    "qs": "^6.5.2",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1",
+    "spotify-connect-ws": "^0.1.1"
   },
   "devDependencies": {
     "request": "^2.81.0",
