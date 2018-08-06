@@ -9,6 +9,9 @@ let code = "";
 let access_token = "";
 let old_volume = null;
 
+let client_id = process.env.CLIENT_ID;
+let client_secret = process.env.CLIENT_SECRET;
+
 let app = express();
 app
   .use(express.static(path.join(__dirname, 'public')))
@@ -24,7 +27,7 @@ app.get('/login', (req, res) => {
   var scopes = 'user-read-private user-read-currently-playing user-follow-modify user-read-email user-modify-playback-state';
   res.redirect('https://accounts.spotify.com/authorize' +
     '?response_type=code' +
-    '&client_id=' + "65fdc90819c849a4a75deeff6c7a2114" +
+    '&client_id=' + client_id +
     (scopes ? '&scope=' + encodeURIComponent(scopes) : '') +
     '&redirect_uri=' + encodeURIComponent("http://localhost:5000/redirect"));
 });
@@ -86,7 +89,7 @@ function getToken(code, res) {
     "grant_type": "authorization_code",
     "redirect_uri": "http://localhost:5000/redirect"
   };
-  var payload = "65fdc90819c849a4a75deeff6c7a2114" + ":" + "a7be2ccf107640f89e0e93ffbcd7e52d";
+  var payload = client_id + ":" + client_secret;
   var encodedPayload = new Buffer(payload).toString("base64");
   let config = {
     headers: {
